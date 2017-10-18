@@ -12,8 +12,8 @@ public class ThreadPool {
 		Integer step = 789474;
 
 		for (Integer iterator = 0; iterator < threads.length; iterator++) {
-			threads[iterator] = new RunnableThread(intervalStart + step * (iterator + 1),
-					intervalStart + step * (iterator + 2), iterator.toString());
+			threads[iterator] = new RunnableThread(intervalStart + step * iterator,
+					intervalStart + step * (iterator + 1), iterator.toString());
 		}
 
 		for (Integer iterator = 0; iterator < threads.length; iterator++) {
