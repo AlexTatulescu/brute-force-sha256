@@ -10,6 +10,7 @@ public class ThreadPool {
 		Thread[] threads = new Thread[114];
 		Integer intervalStart = 10000000;
 		Integer step = 789474;
+		Integer finalThread = 0;
 
 		for (Integer iterator = 0; iterator < threads.length; iterator++) {
 			threads[iterator] = new RunnableThread(intervalStart + step * iterator,
@@ -17,15 +18,18 @@ public class ThreadPool {
 		}
 
 		for (Integer iterator = 0; iterator < threads.length; iterator++) {
-			threads[iterator].run();
+			if (!found) {
+				threads[iterator].run();
+			}else{
+				finalThread = iterator;
+			}
 		}
 
 		if (found) {
-			for (Integer iterator = 0; iterator < threads.length; iterator++) {
+			for (Integer iterator = 0; iterator < finalThread; iterator++) {
 				try {
 					threads[iterator].join();
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

@@ -28,7 +28,7 @@ public class RunnableThread extends Thread {
 		for(iterator = start; iterator <= end ; iterator++){
 			if( sha256.hashing(iterator).equals(hash) ){
 				ThreadPool.found = true;
-				System.out.println("Found password: " + iterator + " on thread " + Thread.currentThread().getId());
+				System.out.println("Found password: " + iterator + " on thread " + name);
 			}
 		}
 	}
